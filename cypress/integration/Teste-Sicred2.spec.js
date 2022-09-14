@@ -69,12 +69,24 @@ describe('Grocery crud',function() {
   cy.get(':nth-child(3) > .form-control').type('Teste Sicred');
   
   it.only('Clicar em caixa de seleção',)
-  cy.get('.no-border-right > .floatL').check();
+  cy.xpath('//*[@type="checkbox"]').check();
   
+  it.only('Clicar em deletar',)
+  cy.get('.no-border-left > .floatL > .btn > .el').click(); 
+    
   
+  it.only('Validar a mensagem',)
+  cy.contains('.alert-delete-multiple', 'Are you sure that you want to delete those ');
   
+  it.only('Clicar em deletar',)
+  cy.get('.delete-multiple-confirmation > .modal-dialog > .modal-content > .modal-footer > .btn-danger').click();
   
-  //cy.exec('taskkill /F /IM cypress.exe')
+  it.only('Trazer mensagem de sucesso',)
+  cy.get('[data-growl="message"] > p').contains('Your data has been successfully deleted from the database');
+  
+  cy.exec('taskkill /F /IM cypress.exe')
 })
 
 })
+
+ 
